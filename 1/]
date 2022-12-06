@@ -1,0 +1,31 @@
+#include <iostream>
+#include <fstream>
+using namespace std;
+
+int main(int argc, char** argv) {
+	ifstream InputFile("input.txt");
+
+	string myText;
+
+	int maxCal = 0;
+	int currCal = 0;
+
+	while (getline (InputFile, myText)) {
+		if (myText.len() == 0) {
+			cout << "newline" << endl;
+			if (currCal >= maxCal)
+				maxCal = currCal;
+			currCal = 0;
+		}
+		else {
+			cout << myText << endl;
+			currCal += stoi(myText);
+		}
+	}
+
+	cout << "Max cal is: " << maxCal;
+
+	InputFile.close();
+
+	return 0;
+}
